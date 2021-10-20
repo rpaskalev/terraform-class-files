@@ -1,2 +1,2 @@
-# terraform-class-files
-Contains Ziyotek class terraform code
+Ths repository contains our class terraform code.
+As we learn new things, th erepository code will grow.
