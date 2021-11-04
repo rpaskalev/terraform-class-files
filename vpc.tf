@@ -3,7 +3,7 @@
 resource "aws_subnet" "my_subnet_1" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "172.26.10.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = "ypur-availability-zone"
 
   tags = {
     Name = "subnet-1"
@@ -52,9 +52,9 @@ resource "aws_security_group" "allow_all" {
 
   ingress {
     description = "All from VPC"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 

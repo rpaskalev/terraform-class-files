@@ -1,4 +1,6 @@
-resource "aws_s3_bucket" "my_first_resourse" {
+
+
+resource "aws_s3_bucket" "iqies_my_first_resourse" {
   bucket = "your-bucket-name"
   acl    = "private"
 
