@@ -5,14 +5,12 @@ resource "aws_db_instance" "default" {
   engine_version       = "10.15"
   instance_class       = "db.t3.micro"
   name                 = "ziyotek"
-  username             = "admin"
-  password             = random_password.database_password.result    #"password"
-  parameter_group_name = aws_db_subnet_group.default.id
-  security_group_names = [aws_security_group.allow_all.id]
+  username             = "ziyotekadmin"
+  password             = random_password.database_password.result 
+  vpc_security_group_ids = [aws_security_group.allow_all.id]
   skip_final_snapshot  = true
   iam_database_authentication_enabled = false
-  db_subnet_group_name = aws_db_subnet_group.default.id    #[aws_security_group.allow_all.id]
-  tags = var.db_tags
+  db_subnet_group_name = aws_db_subnet_group.default.id
 }
 
 resource "aws_db_subnet_group" "default" {
@@ -30,7 +28,7 @@ resource "random_password" "database_password" {
 
 resource "aws_ssm_parameter" "dev_db_secret" {
   name        = "/ziyotek/class/database/password"
-  description = "The da password we will auto create"
+  description = "The DB password"
   type        = "SecureString"
   key_id      = aws_kms_key.database_key.key_id
   value       = random_password.database_password.result

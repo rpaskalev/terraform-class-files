@@ -1,10 +1,30 @@
+variable "vpc_cidr_block" {
+  default = "172.26.0.0/16"
+}
+
+variable "vpc_tags" {
+  type = map
+  default = {
+    Name = "ziytek-class"
+    Environment = "dev"
+  }
+}
+
+variable "subnet_1_cidr" {
+  default = "172.26.10.0/24"
+}
+
+variable "subnet_2_cidr" {
+  default = "172.26.20.0/24"
+}
+
 variable "ami_id" {
   type    = string
   default = "ami-02e136e904f3da870"
 }
 
 variable "key_blahblahblah" {
-  default = "rady_key_new"
+  default = ""
 }
 variable "instace_type" {
   default = "t2.micro"
@@ -16,7 +36,7 @@ variable "device_index" {
 }
 
 variable "instance_name" {
-  default = ""
+  default = "ziyotek-class-instance"
 }
 
 variable "bucket_name" {
@@ -30,14 +50,6 @@ variable "acl_type" {
 
 variable "environment" {
   default = "SBX1"
-}
-
-variable "subnet_1_cidr" {
-  default = "172.26.10.0/24"
-}
-
-variable "subnet_2_cidr" {
-  default = "172.26.20.0/24"
 }
 
 variable "subnet_1_name" {
@@ -60,20 +72,9 @@ variable "ec2_tags" {
 variable "subnet_tags" {
     type = map
     default = {
-        VPC = "dev_vpc"
+        Name = "ziyotek-subnet"
         Environment = "Dev"
     } 
-}
-
-variable "interface_tags" {
-  type = map
-  default = {
-      environment = "Dev"
-  }
-}
-
-variable "vpc_cidr_block" {
-  default = "172.26.0.0/16"
 }
 
 variable "ingress_cidr_blocks" {
@@ -82,11 +83,17 @@ variable "ingress_cidr_blocks" {
   default     = ["0.0.0.0/0"/*"10.10.0.0/24"*/]
 }
 
+variable "sg_tags" {
+  type = map
+  default = {
+    Name = "ziyotek-sg"
+  } 
+}
+
 variable "db_tags" {
   type = map
   default = {
     Name = "dav-database"
     Environment = "dev"
   }
-  
 }

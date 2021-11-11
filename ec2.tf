@@ -2,8 +2,9 @@
 
 resource "aws_instance" "web" {
   ami               = var.ami_id
-  #availability_zone = var.availability_zone
 
+subnet_id = aws_subnet.my_subnet_1.id
+# below we have 2 ways to add user data - directly or using the "file" function:
   # user_data = <<EOF
   	  # #!/bin/bash
       # sudo yum update -y
@@ -16,18 +17,14 @@ resource "aws_instance" "web" {
 user_data = file("userdata.sh")
 
   iam_instance_profile  = aws_iam_instance_profile.s3_profile.id
-
-
   ebs_optimized = var.ebs_optimized
 
-  key_name      = aws_key_pair.ec2_key_pair.key_name     #var.key_blahblahblah
+  key_name      = aws_key_pair.ec2_key_pair.key_name
   instance_type = var.instace_type
 
   # Security group must be declared in the network_interface_id block if we are adding that parameter.
   vpc_security_group_ids = [aws_security_group.allow_all.id]
-
   tags = var.ec2_tags
-
 }
 
 resource "aws_internet_gateway" "gw" {
