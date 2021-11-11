@@ -1,11 +1,11 @@
 
 
 resource "aws_s3_bucket" "iqies_my_first_resourse" {
-  bucket = "your-bucket-name"
-  acl    = "private"
+  bucket = var.bucket_name
+  acl    = var.acl_type
 
   tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
+    Name        = var.bucket_name
+    Environment = var.environment
   }
 }

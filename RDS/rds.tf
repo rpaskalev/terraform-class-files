@@ -13,7 +13,8 @@
     availability_zone    = "us-east-1a"
     backup_retention_period  = 7
     backup_window = "21:00-23:50"
-    copy_tags_to_snapshot = true
+    skip_final_snapshot  = true
+    copy_tags_to_snapshot = false
     #enabled_cloudwatch_logs_exports = "error"
     iam_database_authentication_enabled = true
     #kms_key_id    = "arn:aws:kms:us-west-1:889473501810:key/98c0efcc-8839-41f2-abef-fbf21d6b7dc1"

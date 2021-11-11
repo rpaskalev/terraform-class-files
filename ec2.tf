@@ -1,24 +1,24 @@
 #this resource will create a separate ec2 instance in th edefault VPC. It will error is a default VPC doesnt exist. 
 
 resource "aws_instance" "web" {
-  ami               = "your-ami"
-  availability_zone = "your-availability-zone"
-  
+  ami               = var.ami_id
+  #availability_zone = var.availability_zone
+  #user_data = 
 
-  key_name      = "your-key"
-  instance_type = "t2.micro"
+
+  iam_instance_profile  = aws_iam_instance_profile.s3_profile.id
+
+
+  ebs_optimized = var.ebs_optimized
+
+  key_name      = var.key_blahblahblah
+  instance_type = var.instace_type
 
   # Security group must be declared in the network_interface_id block if we are adding that parameter.
-  #vpc_security_group_ids = [aws_security_group.allow_all.id]
+  vpc_security_group_ids = [aws_security_group.allow_all.id]
 
-  network_interface {
-    network_interface_id = aws_network_interface.ziyotek_1.id
-    device_index         = 0
-  }
+  tags = var.ec2_tags
 
-  tags = {
-    Name = "your-name"
-  }
 }
 
 resource "aws_internet_gateway" "gw" {
