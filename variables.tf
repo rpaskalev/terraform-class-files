@@ -3,10 +3,6 @@ variable "ami_id" {
   default = "ami-02e136e904f3da870"
 }
 
-variable "availability_zone" {
-  type    = string
-  default = "us-east-1a"
-}
 variable "key_blahblahblah" {
   default = "rady_key_new"
 }
@@ -84,4 +80,13 @@ variable "ingress_cidr_blocks" {
   description = "List of IPv4 CIDR ranges to use on all ingress rules"
   type        = list(string)
   default     = ["0.0.0.0/0"/*"10.10.0.0/24"*/]
+}
+
+variable "db_tags" {
+  type = map
+  default = {
+    Name = "dav-database"
+    Environment = "dev"
+  }
+  
 }

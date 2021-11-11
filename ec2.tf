@@ -3,15 +3,24 @@
 resource "aws_instance" "web" {
   ami               = var.ami_id
   #availability_zone = var.availability_zone
-  #user_data = 
 
+  # user_data = <<EOF
+  	  # #!/bin/bash
+      # sudo yum update -y
+	    # sudo yum install -y httpd
+	    # sudo systemctl start httpd.service
+	    # # sudo systemctl enable httpd.service
+	    # sudo echo "<h1> At $(hostname -f) </h1>" > /var/www/html/index.html
+      # EOF                   
+
+user_data = file("userdata.sh")
 
   iam_instance_profile  = aws_iam_instance_profile.s3_profile.id
 
 
   ebs_optimized = var.ebs_optimized
 
-  key_name      = var.key_blahblahblah
+  key_name      = aws_key_pair.ec2_key_pair.key_name     #var.key_blahblahblah
   instance_type = var.instace_type
 
   # Security group must be declared in the network_interface_id block if we are adding that parameter.
