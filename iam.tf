@@ -35,10 +35,10 @@ resource "aws_iam_policy" "s3_access_policy" {
         Action = [
           "s3:*",
         ]
-        Effect   = "Allow"
+        Effect = "Allow"
         Resource = [
-            "${aws_s3_bucket.iqies_my_first_resourse.arn}",
-            "${aws_s3_bucket.iqies_my_first_resourse.arn}/*",
+          "${aws_s3_bucket.iqies_my_first_resourse.arn}",
+          "${aws_s3_bucket.iqies_my_first_resourse.arn}/*",
         ]
       }
     ]

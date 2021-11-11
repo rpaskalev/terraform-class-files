@@ -1,7 +1,7 @@
 resource "aws_vpc" "my_vpc" {
   cidr_block = var.vpc_cidr_block
 
-tags = var.vpc_tags
+  tags = var.vpc_tags
 }
 
 resource "aws_subnet" "my_subnet_1" {
@@ -17,7 +17,7 @@ resource "aws_subnet" "my_subnet_2" {
   cidr_block        = var.subnet_2_cidr
   availability_zone = "us-east-1b"
 
-  tags = var.subnet_tags 
+  tags = var.subnet_tags
 }
 
 resource "aws_security_group" "allow_all" {
@@ -40,5 +40,5 @@ resource "aws_security_group" "allow_all" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = var.sg_tags 
+  tags = var.sg_tags
 }

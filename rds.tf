@@ -1,16 +1,16 @@
 resource "aws_db_instance" "default" {
-  allocated_storage    = 10
-  storage_type         = "gp2"
-  engine               = "postgres"
-  engine_version       = "10.15"
-  instance_class       = "db.t3.micro"
-  name                 = "ziyotek"
-  username             = "ziyotekadmin"
-  password             = random_password.database_password.result 
-  vpc_security_group_ids = [aws_security_group.allow_all.id]
-  skip_final_snapshot  = true
+  allocated_storage                   = 10
+  storage_type                        = "gp2"
+  engine                              = "postgres"
+  engine_version                      = "10.15"
+  instance_class                      = "db.t3.micro"
+  name                                = "ziyotek"
+  username                            = "ziyotekadmin"
+  password                            = random_password.database_password.result
+  vpc_security_group_ids              = [aws_security_group.allow_all.id]
+  skip_final_snapshot                 = true
   iam_database_authentication_enabled = false
-  db_subnet_group_name = aws_db_subnet_group.default.id
+  db_subnet_group_name                = aws_db_subnet_group.default.id
 }
 
 resource "aws_db_subnet_group" "default" {

@@ -3,9 +3,9 @@ variable "vpc_cidr_block" {
 }
 
 variable "vpc_tags" {
-  type = map
+  type = map(any)
   default = {
-    Name = "ziytek-class"
+    Name        = "ziytek-class"
     Environment = "dev"
   }
 }
@@ -70,30 +70,30 @@ variable "ec2_tags" {
 }
 
 variable "subnet_tags" {
-    type = map
-    default = {
-        Name = "ziyotek-subnet"
-        Environment = "Dev"
-    } 
+  type = map(any)
+  default = {
+    Name        = "ziyotek-subnet"
+    Environment = "Dev"
+  }
 }
 
 variable "ingress_cidr_blocks" {
   description = "List of IPv4 CIDR ranges to use on all ingress rules"
   type        = list(string)
-  default     = ["0.0.0.0/0"/*"10.10.0.0/24"*/]
+  default     = ["0.0.0.0/0" /*"10.10.0.0/24"*/]
 }
 
 variable "sg_tags" {
-  type = map
+  type = map(any)
   default = {
     Name = "ziyotek-sg"
-  } 
+  }
 }
 
 variable "db_tags" {
-  type = map
+  type = map(any)
   default = {
-    Name = "dav-database"
+    Name        = "dav-database"
     Environment = "dev"
   }
 }
