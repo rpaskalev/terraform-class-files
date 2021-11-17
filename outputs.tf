@@ -3,9 +3,9 @@ output "s3_role_name" {
   sensitive = true
 }
 
-output "ec2_public_ip" {
-  value = aws_instance.web.private_ip
-}
+# output "ec2_public_ip" {
+#   value = aws_instance.web.private_ip
+# }
 
 output "vpc_instance_tenancy" {
   value = aws_vpc.my_vpc.instance_tenancy

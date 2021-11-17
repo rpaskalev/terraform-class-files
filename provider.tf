@@ -12,8 +12,8 @@ terraform {
   #     bucket = "your-existing-bucket"
   #     key    = "ec2-example/terraform.tfstate"
   #     region = "us-east-1"
-  #     dynamodb_table = "terraform-lock"
-  #     encrypt = true
+  #     #dynamodb_table = "terraform-lock"
+  #     #encrypt = true
   #   }
 }
 

@@ -23,6 +23,7 @@ resource "aws_subnet" "my_subnet_2" {
 resource "aws_security_group" "allow_all" {
   name        = "allow_all"
   description = "Allow ALL inbound traffic"
+  depends_on = [aws_vpc.my_vpc]
   vpc_id      = aws_vpc.my_vpc.id
 
   ingress {
