@@ -1,4 +1,5 @@
 variable "environment" {}
+
 variable "subnet_1_cidr" {
   default = ""
 }
@@ -8,7 +9,7 @@ variable "subnet_2_cidr" {
 }
 
 variable "availability_zone" {
-    default = "us-east-1"
+    default = "us-east-1a"
 }
 
 variable "vpc_id" {}
