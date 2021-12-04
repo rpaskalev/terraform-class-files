@@ -1,5 +1,4 @@
 resource "aws_dynamodb_table" "backend_s3_lock" {
-  count = 10
   name             = "${var.table_name}-${var.environment}" 
   hash_key         = var.hash_key 
   read_capacity = var.read_capacity
