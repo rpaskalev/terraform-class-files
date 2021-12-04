@@ -1,11 +1,22 @@
 
 locals {
   force_destroy = true
-  bucket_name = "${var.bucket_name}-${var.environment}"
+  environment = var.environment
+}
+
+variable "bucket_reactor" {
+  default = "reactor-bucket-1-rady1-1234567891011"
+}
+
+variable "bucket_report" {
+  default = "reports-bucket-1-rady1-1234567891011"
 }
 
 resource "aws_s3_bucket" "iqies_my_first_resourse" {
-  bucket = local.bucket_name
+  
+  count = var.environment != "sbx" ? 1 : 0
+
+  bucket = "${var.bucket_reactor}-${var.environment}"
   acl    = var.acl_type
   force_destroy = local.force_destroy
 
@@ -19,7 +30,10 @@ resource "aws_s3_bucket" "iqies_my_first_resourse" {
 }
 
 resource "aws_s3_bucket" "iqies_my_second_resourse" {
-  bucket = "${local.bucket_name}-2"
+  
+  count = var.environment != "sbx" ? 1 : 0
+#   ? = "if not true"
+  bucket = "${var.bucket_report}-${var.environment}"
   acl    = var.acl_type
   force_destroy = local.force_destroy
 
