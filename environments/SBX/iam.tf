@@ -1,5 +1,4 @@
-module "instance_profile" {
+module "iam" {
     source = "../../modules/iam"
     environment = var.environment
-    #s3_bucket = module.s3.s3_bucket_id
 }

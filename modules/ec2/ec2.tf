@@ -1,12 +1,12 @@
 resource "aws_instance" "web" {
-  ami =  data.aws_ami.example.image_id
+  ami = var.environment == "sbx" ? "ami-04d29b6f966df1537" : data.aws_ami.example.image_id
 
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true            
 
-  user_data = file("../../files/userdata.sh")
+  user_data = var.user_data 
 
-  #iam_instance_profile = aws_iam_instance_profile.s3_profile.id
+  iam_instance_profile = var.instance_profile
   ebs_optimized        = var.ebs_optimized
 
   key_name      = var.key_name

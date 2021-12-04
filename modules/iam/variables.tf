@@ -1,3 +1,5 @@
 variable "environment" {}
 
-variable "s3_bucket" {}
+variable "instance_profile" {
+    default = null
+}
