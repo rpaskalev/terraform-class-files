@@ -16,6 +16,6 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = var.vpc_security_group
     
   tags = {
-    Environment = var.environment
+    Name = "SampleApp"    
   }
 }
