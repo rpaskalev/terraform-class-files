@@ -25,4 +25,4 @@ artifacts:
    - '**/*'
   #base-directory: base_location
   name: build_output
-  #discard-paths: no 
+
