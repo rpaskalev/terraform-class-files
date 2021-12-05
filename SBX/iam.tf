@@ -1,4 +1,4 @@
 module "iam" {
-    source = "../../modules/iam"
+    source = "../modules/iam"
     environment = var.environment
 }
