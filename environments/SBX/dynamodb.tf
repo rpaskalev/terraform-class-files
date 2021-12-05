@@ -1,4 +1,4 @@
-module "dynamodb" {
-    source = "../../modules/dynamodb"
-    environment = var.environment
-}
+# module "dynamodb" {
+#     source = "../../modules/dynamodb"
+#     environment = var.environment
+# }
