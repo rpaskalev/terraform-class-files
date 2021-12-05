@@ -15,8 +15,8 @@ phases:
     commands:
       - cd $CODEBUILD_SRC_DIR/SBX
       - terraform init -input=false
-     # - terraform plan -input=false
-      - terraform destroy -auto-approve
+      - terraform plan -input=false
+      - terraform apply -auto-approve
   post_build:
     commands:
       - echo "terraform plan completed on `date`"
