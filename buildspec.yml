@@ -14,8 +14,8 @@ phases:
   build:
     commands:
       - cd $CODEBUILD_SRC_DIR/environments/SBX
-      # - terraform init -input=false
-      # - terraform plan -input=false
+      - terraform init -input=false
+      - terraform plan -input=false
       - terraform destroy -auto-approve
   post_build:
     commands:
