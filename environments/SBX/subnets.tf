@@ -1,5 +1,5 @@
 module "subnets" {
-    source = "../modules/vpc"
+    source = "../../modules/vpc"
     environment = var.environment
     vpc_id = module.subnets.vpc_id
     # subnet_1_cidr = "10.10.10.0/24"
